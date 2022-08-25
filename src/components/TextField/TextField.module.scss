@@ -1,0 +1,23 @@
+.input {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  background: #1c2833;
+  border-radius: 20px;
+  border: none;
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: #6b869e;
+  outline: none;
+
+  &::placeholder {
+    color: #3e4e5d;
+  }
+
+  &:disabled {
+    color: #6b869e;
+    cursor: no-drop;
+  }
+}

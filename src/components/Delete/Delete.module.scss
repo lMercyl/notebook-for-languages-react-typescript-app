@@ -1,0 +1,18 @@
+.delete {
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.7rem;
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #964040;
+  background: #ff9191;
+  border-radius: 10px;
+  border: none;
+  transition: background 0.1 ease-in-out;
+
+  &:hover {
+    background: #ff9191df;
+  }
+}

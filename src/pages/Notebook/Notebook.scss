@@ -1,0 +1,55 @@
+.title-list {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: rgba(232, 255, 251, 0.53);
+}
+
+.vocabulary {
+  li {
+    padding: 0.5rem 0;
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 28px;
+    color: #91ffeb;
+    animation: opacityAnim 0.3s ease-in-out;
+
+    em {
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+}
+
+.empty {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: #91ffeb;
+}
+
+.img-button {
+  margin-left: 0.5rem;
+}
+
+.hide-translate {
+  background-color: #91ffeb;
+
+  &:hover {
+    background-color: #202f3e;
+  }
+}
+
+@keyframes opacityAnim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

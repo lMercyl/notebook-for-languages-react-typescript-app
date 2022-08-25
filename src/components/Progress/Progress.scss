@@ -1,0 +1,36 @@
+.progress-text {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: rgba(232, 255, 251, 0.53);
+}
+
+.progress-container {
+  position: relative;
+  height: 20px;
+  width: 100%;
+  background: #162533;
+  border-radius: 20px;
+
+  .progress-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 70%;
+    background: #91ffeb;
+    border-radius: 20px;
+    animation: wop 1s ease-in-out;
+  }
+}
+
+@keyframes wop {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 70%;
+  }
+}

@@ -1,0 +1,18 @@
+.button {
+  width: 100%;
+  padding: 1.3rem 2rem;
+  background: #91ffeb;
+  border-radius: 20px;
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 34px;
+  color: #1c2833;
+  border: none;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: #65f3db;
+  }
+}

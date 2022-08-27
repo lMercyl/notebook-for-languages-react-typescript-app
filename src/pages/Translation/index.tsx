@@ -94,7 +94,7 @@ const Translation = () => {
           onClick={word.length !== 0 && translate.length !== 0 ? onClickAnswer : onClickComplete}
           className="submit">
           {word.length === 0 && translate.length === 0 ? (
-            <Link to="/notebook-for-languages-react-typescript">Complete</Link>
+            <Link to="/notebook-for-languages-react-typescript-app">Complete</Link>
           ) : (
             'Reply'
           )}

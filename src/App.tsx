@@ -7,10 +7,10 @@ import Translation from './pages/Translation';
 function App() {
   return (
     <Routes>
-      <Route path="/notebook-for-languages-react-typescript" element={<Layout />}>
+      <Route path="/notebook-for-languages-react-typescript-app" element={<Layout />}>
         <Route index element={<Notebook />} />
         <Route
-          path="/notebook-for-languages-react-typescript/translation"
+          path="/notebook-for-languages-react-typescript-app/translation"
           element={<Translation />}
         />
       </Route>

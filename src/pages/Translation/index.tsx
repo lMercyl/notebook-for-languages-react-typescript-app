@@ -53,18 +53,23 @@ const Translation = () => {
       setErr(true);
     } else {
       setErr(false);
-      if (list.filter((item: Item) => item === answer)) {
-        setResult({ ...result, right: ++result.right });
+      if (
+        list.find(
+          (item: Item) => item.source === answer.source && item.translate === answer.translate,
+        )
+      ) {
+        setResult({ ...result, right: result.right + 2 });
       } else {
-        setResult({ ...result, right: ++result.error });
-        setResultArr([...resultArr, answer]);
+        setResult({ ...result, error: result.error + 2 });
       }
-      console.log(answer);
+      setResultArr([...resultArr, answer]);
       setAnswer({ source: '', translate: '' });
       setWord(word.filter((item: string) => item !== answer.source));
       setTranslate(translate.filter((item: string) => item !== answer.translate));
     }
   };
+
+  console.log(result);
 
   const onClickComplete = () => {
     const data = {

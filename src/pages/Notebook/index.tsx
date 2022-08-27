@@ -25,9 +25,13 @@ interface Result {
 const Notebook = () => {
   const [text, setText] = React.useState<string>('');
   const [list, setList] = React.useState<Array<Item>>(() => {
-    const data = localStorage.getItem('list');
-    if (typeof data === 'string') {
-      return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
+    if (localStorage.getItem('list') !== null) {
+      const data = localStorage.getItem('list');
+      if (typeof data === 'string') {
+        return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
+      }
+    } else {
+      return [];
     }
   });
   const [result, setResult] = React.useState<Result>(() => {

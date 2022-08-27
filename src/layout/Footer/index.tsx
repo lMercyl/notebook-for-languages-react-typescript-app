@@ -10,13 +10,13 @@ const Footer = () => {
           <nav>
             <ul className="footer-navigator">
               <li>
-                <Link to="/">Vk.com</Link>
+                <Link to="/notebook-for-languages-react-typescript-app">Vk.com</Link>
               </li>
               <li>
-                <Link to="/">Telegram</Link>
+                <Link to="/notebook-for-languages-react-typescript-app">Telegram</Link>
               </li>
               <li>
-                <Link to="/">Github</Link>
+                <Link to="/notebook-for-languages-react-typescript-app">Github</Link>
               </li>
             </ul>
           </nav>

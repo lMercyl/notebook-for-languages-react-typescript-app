@@ -27,7 +27,7 @@ const NavTask = ({ right, all }: NavTaskProps) => {
                 <img width={25} height={25} src={blue} alt="blue" />
               )}
               {all === 0 && <img width={25} height={25} src={expect} alt="expects" />}
-              <Link to="translation">Translation</Link>
+              <Link to="/notebook-for-languages-react-typescript-app/translation">Translation</Link>
               {all !== 0 && (
                 <span>
                   {Math.floor((right / all) * 100) < 50
@@ -41,11 +41,11 @@ const NavTask = ({ right, all }: NavTaskProps) => {
             </li>
             <li className="d-flex align-items-center">
               <img width={25} height={25} src={expect} alt="expects" />
-              <Link to="/">Speed (in developing)</Link>
+              <Link to="/notebook-for-languages-react-typescript-app">Speed (in developing)</Link>
             </li>
             <li className="d-flex align-items-center">
               <img width={25} height={25} src={expect} alt="expects" />
-              <Link to="/">Speech (in developing)</Link>
+              <Link to="/notebook-for-languages-react-typescript-app">Speech (in developing)</Link>
             </li>
           </ul>
         </nav>

@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/notebook-for-languages-react-typescript-app/static/css/main.f29dde3d.css",
+    "main.css": "/notebook-for-languages-react-typescript-app/static/css/main.f007b663.css",
     "main.js": "/notebook-for-languages-react-typescript-app/static/js/main.49003413.js",
     "static/js/787.155d2bb9.chunk.js": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js",
     "static/media/setting.svg": "/notebook-for-languages-react-typescript-app/static/media/setting.d2dd0c085f9d36e6b9088fc23743ad90.svg",
@@ -9,12 +9,12 @@
     "static/media/blue.svg": "/notebook-for-languages-react-typescript-app/static/media/blue.183586008e58e72480dc31aad251f907.svg",
     "static/media/red.svg": "/notebook-for-languages-react-typescript-app/static/media/red.3211f41454d76f56430a78249cc4044d.svg",
     "static/media/yellow.svg": "/notebook-for-languages-react-typescript-app/static/media/yellow.36635c251378c166c0651b4e3563f0a1.svg",
-    "main.f29dde3d.css.map": "/notebook-for-languages-react-typescript-app/static/css/main.f29dde3d.css.map",
+    "main.f007b663.css.map": "/notebook-for-languages-react-typescript-app/static/css/main.f007b663.css.map",
     "main.49003413.js.map": "/notebook-for-languages-react-typescript-app/static/js/main.49003413.js.map",
     "787.155d2bb9.chunk.js.map": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f29dde3d.css",
+    "static/css/main.f007b663.css",
     "static/js/main.49003413.js"
   ]
 }

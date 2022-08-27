@@ -7,9 +7,12 @@ import Translation from './pages/Translation';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/notebook-for-languages-react-typescript" element={<Layout />}>
         <Route index element={<Notebook />} />
-        <Route path="translation" element={<Translation />} />
+        <Route
+          path="/notebook-for-languages-react-typescript/translation"
+          element={<Translation />}
+        />
       </Route>
     </Routes>
   );

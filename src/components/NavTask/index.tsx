@@ -21,12 +21,14 @@ const NavTask = ({ right, all }: NavTaskProps) => {
             <li className="d-flex align-items-center">
               {all !== 0 && Math.floor((right / all) * 100) < 50 ? (
                 <img width={25} height={25} src={bad} alt="bad" />
-              ) : Math.floor((right / all) * 100) < 80 ? (
+              ) : all !== 0 && Math.floor((right / all) * 100) < 80 ? (
                 <img width={25} height={25} src={yellow} alt="yellow" />
-              ) : (
+              ) : all !== 0 ? (
                 <img width={25} height={25} src={blue} alt="blue" />
+              ) : (
+                <img width={25} height={25} src={expect} alt="expects" />
               )}
-              {all === 0 && <img width={25} height={25} src={expect} alt="expects" />}
+
               <Link to="/notebook-for-languages-react-typescript-app/translation">Translation</Link>
               {all !== 0 && (
                 <span>

@@ -15,6 +15,17 @@ interface Result {
   all: number;
 }
 
+const shuffle = (arr: Array<any>) => {
+  let j, temp;
+  for (let i = arr.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = arr[j];
+    arr[j] = arr[i];
+    arr[i] = temp;
+  }
+  return arr;
+};
+
 const Translation = () => {
   const [list, setList] = React.useState<Array<Item>>(() => {
     const data = localStorage.getItem('list');
@@ -22,9 +33,11 @@ const Translation = () => {
       return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
     }
   });
-  const [word, setWord] = React.useState<Array<string>>(list.map((item: Item) => item.source));
+  const [word, setWord] = React.useState<Array<string>>(
+    shuffle(list.map((item: Item) => item.source)),
+  );
   const [translate, setTranslate] = React.useState<Array<string>>(
-    list.map((item: Item) => item.translate),
+    shuffle(list.map((item: Item) => item.translate)),
   );
   const [answer, setAnswer] = React.useState<Item>({ source: '', translate: '' });
   const [resultArr, setResultArr] = React.useState<Array<Item>>([]);

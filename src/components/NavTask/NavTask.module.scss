@@ -1,0 +1,49 @@
+.nav {
+  li {
+    a {
+      padding: 0.5rem 0;
+      margin-left: 1rem;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 27px;
+      line-height: 28px;
+      color: #91ffeb;
+      border: none;
+      background-color: #202f3e;
+      opacity: 0.5;
+      transition: opacity 0.1s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    img {
+      animation: rotate infinite 1.5s ease;
+    }
+
+    span {
+      padding: 0.5rem 0;
+      margin-left: 1rem;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 27px;
+      line-height: 28px;
+      color: #91ffeb;
+      border: none;
+      background-color: #202f3e;
+      transition: opacity 0.1s ease-in-out;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

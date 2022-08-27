@@ -19,18 +19,22 @@
     left: 0;
     top: 0;
     height: 20px;
-    width: 70%;
     background: #91ffeb;
     border-radius: 20px;
     animation: wop 1s ease-in-out;
+  }
+
+  .red {
+    background: #ff9191;
+  }
+
+  .yellow {
+    background: #f6ff91;
   }
 }
 
 @keyframes wop {
   0% {
     width: 0;
-  }
-  100% {
-    width: 70%;
   }
 }

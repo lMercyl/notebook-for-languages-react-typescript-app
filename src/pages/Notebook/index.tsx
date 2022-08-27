@@ -9,10 +9,17 @@ import React from 'react';
 import Setting from '../../components/Setting';
 import Delete from '../../components/Delete';
 import imgSetting from '../../assets/images/setting.svg';
+import NavTask from '../../components/NavTask';
 
 interface Item {
   source: string;
   translate: string;
+}
+
+interface Result {
+  right: number;
+  error: number;
+  all: number;
 }
 
 const Notebook = () => {
@@ -21,6 +28,18 @@ const Notebook = () => {
     const data = localStorage.getItem('list');
     if (typeof data === 'string') {
       return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
+    }
+  });
+  const [result, setResult] = React.useState<Result>(() => {
+    if (localStorage.getItem('result') !== null) {
+      const data = localStorage.getItem('result');
+      if (typeof data === 'string') {
+        return JSON.parse(data).result.all === 0
+          ? { right: 0, error: 0, all: 0 }
+          : JSON.parse(data).result;
+      }
+    } else {
+      return { right: 0, error: 0, all: 0 };
     }
   });
   const [error, setError] = React.useState<boolean>(false);
@@ -73,7 +92,8 @@ const Notebook = () => {
 
   return (
     <>
-      <Progress />
+      <Progress right={result.right} all={result.all} />
+      <NavTask right={result.right} all={result.all} />
       {error && (
         <Row className="mt-3">
           <Col lg={12}>
@@ -81,7 +101,7 @@ const Notebook = () => {
           </Col>
         </Row>
       )}
-      <Row className="mt-4 gy-4">
+      <Row className="mt-2 gy-4">
         <Col lg={5}>
           <TextField onChangeInput={onChangeWord} placeholder="word" />
         </Col>
@@ -117,7 +137,7 @@ const Notebook = () => {
           list.map((item: Item) => (
             <Col key={item.source} lg={4}>
               <ul className="vocabulary">
-                <li>
+                <li className="d-flex align-items-center">
                   {item.source} -{' '}
                   <em className={hide ? 'hide-translate' : undefined}>{item.translate}</em>
                   {displayDelete ? (

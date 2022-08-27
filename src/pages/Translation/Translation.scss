@@ -1,0 +1,71 @@
+.translation {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 28px;
+  color: rgba(232, 255, 251, 0.53);
+  text-align: center;
+}
+
+.title-list {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: rgba(232, 255, 251, 0.53);
+}
+
+.item {
+  padding: 0.5rem 0;
+  margin: 0 1rem;
+  width: inherit !important;
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: #91ffeb;
+  cursor: pointer;
+  border: none;
+  background-color: #202f3e;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.translate {
+  font-family: 'Roboto', sans-serif;
+}
+
+.submit {
+  font-family: 'Inconsolata';
+  color: #91ffeb;
+  border: none;
+  background-color: #202f3e;
+  opacity: 0.5;
+  font-size: 2rem;
+  width: inherit;
+  text-transform: lowercase;
+
+  a {
+    font-family: 'Inconsolata';
+    color: #91ffeb;
+    border: none;
+    background-color: #202f3e;
+    opacity: 0.5;
+    font-size: 2rem;
+    width: inherit;
+    text-transform: lowercase;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+em {
+  font-family: 'Roboto', sans-serif;
+}

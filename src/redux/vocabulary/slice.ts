@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { getListFromLS } from '../../utils/getListFormLS';
+import { getListFromLS } from '../../utils/getListFromLS';
 import { Item, VocabularySliceState } from './types';
 
 

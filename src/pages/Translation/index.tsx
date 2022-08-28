@@ -1,82 +1,64 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import { ActiveButton } from '../../components/Button';
+import { ActiveButton, Button } from '../../components/Button';
 import Error from '../../components/Error';
 import './Translation.scss';
-
-interface Item {
-  source: string;
-  translate: string;
-}
-
-interface Result {
-  right: number;
-  error: number;
-  all: number;
-}
-
-const shuffle = (arr: Array<any>) => {
-  let j, temp;
-  for (let i = arr.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    temp = arr[j];
-    arr[j] = arr[i];
-    arr[i] = temp;
-  }
-  return arr;
-};
+import { shuffle } from '../../utils/suffle';
+import { useSelector } from 'react-redux';
+import { selectAnswer } from '../../redux/answer/selector';
+import { selectResult } from '../../redux/result/selector';
+import { selectVocabulary } from '../../redux/vocabulary/selector';
+import { selectWords } from '../../redux/words/selector';
+import { removeSource, removeTranslation, setWords } from '../../redux/words/slice';
+import { useAppDispatch } from '../../hooks/selectorHook';
+import { setAnswer, setSource, setTranslate } from '../../redux/answer/slice';
+import { addRight, addError, setAll, setResult } from '../../redux/result/slice';
+import { Link } from 'react-router-dom';
 
 const Translation = () => {
-  const [list, setList] = React.useState<Array<Item>>(() => {
-    const data = localStorage.getItem('list');
-    if (typeof data === 'string') {
-      return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
-    }
-  });
-  const [word, setWord] = React.useState<Array<string>>(
-    shuffle(list.map((item: Item) => item.source)),
-  );
-  const [translate, setTranslate] = React.useState<Array<string>>(
-    shuffle(list.map((item: Item) => item.translate)),
-  );
-  const [answer, setAnswer] = React.useState<Item>({ source: '', translate: '' });
-  const [resultArr, setResultArr] = React.useState<Array<Item>>([]);
-  const [result, setResult] = React.useState<Result>({
-    right: 0,
-    error: 0,
-    all: word.length + translate.length,
-  });
   const [err, setErr] = React.useState<boolean>(false);
 
+  const { list } = useSelector(selectVocabulary);
+  const result = useSelector(selectResult);
+  const { source, translate } = useSelector(selectAnswer);
+  const { sources, translations } = useSelector(selectWords);
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    dispatch(
+      setWords({
+        sources: shuffle(list.map((item) => item.source)),
+        translations: shuffle(list.map((item) => item.translate)),
+      }),
+    );
+    dispatch(setResult({ right: 0, error: 0, all: list.length * 2 }));
+  }, []);
+
   const onClickAnswer = () => {
-    if (answer.source === '' || answer.translate === '') {
+    if (source === '' || translate === '') {
       setErr(true);
     } else {
-      setErr(false);
-      if (
-        list.find(
-          (item: Item) => item.source === answer.source && item.translate === answer.translate,
-        )
-      ) {
-        setResult({ ...result, right: result.right + 2 });
+      if (list.find((item) => item.source === source && item.translate === translate)) {
+        dispatch(addRight());
       } else {
-        setResult({ ...result, error: result.error + 2 });
+        dispatch(addError());
       }
-      setResultArr([...resultArr, answer]);
-      setAnswer({ source: '', translate: '' });
-      setWord(word.filter((item: string) => item !== answer.source));
-      setTranslate(translate.filter((item: string) => item !== answer.translate));
+      dispatch(setAnswer({ source: '', translate: '' }));
+      dispatch(removeSource(source));
+      dispatch(removeTranslation(translate));
     }
   };
-
-  console.log(result);
 
   const onClickComplete = () => {
     const data = {
-      result: result,
+      right: result.right,
+      error: result.error,
+      all: result.all,
     };
     localStorage.setItem('result', JSON.stringify(data));
   };
+
+  console.log(result);
 
   return (
     <>
@@ -86,42 +68,48 @@ const Translation = () => {
         </Row>
       )}
       <Row className="justify-content-center mt-5 mb-5">
-        <p className="translation mb-5">
-          {answer.source === '' ? '<Word>' : answer.source} -{' '}
-          {answer.translate === '' ? '<Translation>' : <em>{answer.translate}</em>}
-        </p>
-        <ActiveButton onClickButton={onClickAnswer} side>
-          reply
-        </ActiveButton>
+        <span className="translation mb-5">
+          {source !== '' ? source : '<Word>'} - {translate !== '' ? translate : '<Translation>'}
+        </span>
+        {sources.length !== 0 ? (
+          <ActiveButton onClickButton={onClickAnswer} side>
+            reply
+          </ActiveButton>
+        ) : (
+          <Link
+            onClick={onClickComplete}
+            className="submit"
+            to="/notebook-for-languages-react-typescript-app">
+            complete
+          </Link>
+        )}
       </Row>
       <Row>
         <p className="title-list mb-3">The words</p>
       </Row>
       <Row>
-        {word.length !== 0 ? (
-          word.map((item: string) => (
-            <button onClick={() => setAnswer({ ...answer, source: item })} className="item">
-              {item}
-            </button>
+        {sources.length !== 0 ? (
+          sources.map((word, index) => (
+            <Button onClickButton={() => dispatch(setSource(word))} key={index} item={true}>
+              {word}
+            </Button>
           ))
         ) : (
-          <p className="item">word is empty</p>
+          <span className="item">word is empty</span>
         )}
       </Row>
       <Row>
-        <p className="title-list mb-3 mt-5">Translations</p>
+        <span className="title-list mb-3 mt-5">Translations</span>
       </Row>
       <Row>
-        {translate.length !== 0 ? (
-          translate.map((item: string) => (
-            <button
-              onClick={() => setAnswer({ ...answer, translate: item })}
-              className="item translate">
-              {item}
-            </button>
+        {translations.length !== 0 ? (
+          translations.map((word, index) => (
+            <Button onClickButton={() => dispatch(setTranslate(word))} key={index} item={true}>
+              {word}
+            </Button>
           ))
         ) : (
-          <p className="item">translation is empty</p>
+          <span className="item">translation is empty</span>
         )}
       </Row>
     </>

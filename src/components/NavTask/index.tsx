@@ -1,5 +1,4 @@
 import styles from './NavTask.module.scss';
-import { Row, Col } from 'react-bootstrap';
 
 type NavTaskProps = {
   children?: React.ReactNode;

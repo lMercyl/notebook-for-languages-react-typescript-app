@@ -6,13 +6,14 @@ interface ButtonProps {
   side?: boolean;
   img?: boolean;
   disabled?: boolean;
+  item?: boolean;
 }
 
 const ActiveButton = (props: ButtonProps) => {
   return <Button {...props} side />;
 };
 
-const Button = ({ onClickButton, children, side, disabled, img }: ButtonProps) => {
+const Button = ({ onClickButton, children, side, disabled, img, item }: ButtonProps) => {
   return (
     <button
       type="button"
@@ -21,7 +22,8 @@ const Button = ({ onClickButton, children, side, disabled, img }: ButtonProps) =
         styles.button +
         (side ? ' ' + styles.side : '') +
         (disabled ? ' ' + styles.disabled : '') +
-        (img ? ' ' + styles.imgButton : '')
+        (img ? ' ' + styles.imgButton : '') +
+        (item ? ' ' + styles.item : '')
       }
       disabled={disabled}>
       {children}

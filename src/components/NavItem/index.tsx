@@ -1,4 +1,3 @@
-import styles from './NavItem.module.scss';
 import { Link } from 'react-router-dom';
 import bad from '../../assets/images/red.svg';
 import blue from '../../assets/images/blue.svg';

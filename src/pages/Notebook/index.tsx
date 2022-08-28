@@ -20,6 +20,7 @@ import { fetchItem } from '../../redux/item/asyncAction';
 import { addItem } from '../../redux/vocabulary/slice';
 import NavItem from '../../components/NavItem';
 import SettingItem from '../../components/SettingItem';
+import { selectResult } from '../../redux/result/selector';
 
 interface userActions {
   disableButton: boolean;
@@ -32,7 +33,10 @@ interface userActions {
 const Notebook = () => {
   const { list } = useSelector(selectVocabulary);
   const { source, translate } = useSelector(selectItem);
+  const { right, all } = useSelector(selectResult);
   const dispatch = useAppDispatch();
+
+  console.log(right, all);
 
   const [userActions, setUserActions] = React.useState<userActions>({
     disableButton: false,
@@ -80,17 +84,17 @@ const Notebook = () => {
 
   return (
     <>
-      <Progress right={5} all={10} />
+      <Progress right={right} all={all} />
       <Row className="mt-3">
         <Col lg={12}>
           <NavTask>
-            <NavItem right={5} all={10} to="translation">
+            <NavItem right={right} all={all} to="translation">
               Translation
             </NavItem>
-            <NavItem right={5} all={0} to="speed">
+            <NavItem right={0} all={0} to="speed">
               Speed (in developing)
             </NavItem>
-            <NavItem right={5} all={0} to="listening">
+            <NavItem right={0} all={0} to="listening">
               Listening
             </NavItem>
           </NavTask>

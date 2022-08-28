@@ -5,5 +5,7 @@ export const getListFromLS = () => {
       const list = JSON.parse(data);
       return list.length !== 0 ? list : [];
     }
+  } else {
+    return [];
   }
 }

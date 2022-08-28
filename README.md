@@ -2,4 +2,4 @@
 
 This project is created in several places for learning English
 
-Stack: React, TypeScript, Redux-Toolkit, SCSS, Bootstrap, axios
+Stack: React, TypeScript, Redux-Toolkit, Redux-Thunk, SCSS, Bootstrap, axios

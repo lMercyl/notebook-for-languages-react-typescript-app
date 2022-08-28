@@ -5,7 +5,7 @@ import Notebook from './pages/Notebook';
 import Speech from './pages/Speech';
 import Translation from './pages/Translation';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/notebook-for-languages-react-typescript-app" element={<Layout />}>
@@ -21,6 +21,6 @@ function App() {
       </Route>
     </Routes>
   );
-}
+};
 
 export default App;

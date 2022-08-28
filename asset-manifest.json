@@ -1,20 +1,25 @@
 {
   "files": {
-    "main.css": "/notebook-for-languages-react-typescript-app/static/css/main.f007b663.css",
-    "main.js": "/notebook-for-languages-react-typescript-app/static/js/main.49003413.js",
+    "main.css": "/notebook-for-languages-react-typescript-app/static/css/main.a9f754ba.css",
+    "main.js": "/notebook-for-languages-react-typescript-app/static/js/main.d437bf92.js",
     "static/js/787.155d2bb9.chunk.js": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js",
+    "static/media/eminem-rap-god.mp3": "/notebook-for-languages-react-typescript-app/static/media/eminem-rap-god.8f60b9e9516da30cbc88.mp3",
+    "static/media/tyler-erthquake.mp3": "/notebook-for-languages-react-typescript-app/static/media/tyler-erthquake.cc026d8b1ff023f98851.mp3",
+    "static/media/eminem-when-i-gone.mp3": "/notebook-for-languages-react-typescript-app/static/media/eminem-when-i-gone.d2b3c87d4c9bd57f4274.mp3",
+    "static/media/eminem-lost-yourself.mp3": "/notebook-for-languages-react-typescript-app/static/media/eminem-lost-yourself.23ee45bba94ee2e8134a.mp3",
+    "static/media/joji-777.mp3": "/notebook-for-languages-react-typescript-app/static/media/joji-777.99f7088ce9532179781a.mp3",
     "static/media/setting.svg": "/notebook-for-languages-react-typescript-app/static/media/setting.d2dd0c085f9d36e6b9088fc23743ad90.svg",
-    "static/media/expect.svg": "/notebook-for-languages-react-typescript-app/static/media/expect.86f96e040e948a44b695c43806addc0f.svg",
     "index.html": "/notebook-for-languages-react-typescript-app/index.html",
+    "static/media/expect.svg": "/notebook-for-languages-react-typescript-app/static/media/expect.86f96e040e948a44b695c43806addc0f.svg",
     "static/media/blue.svg": "/notebook-for-languages-react-typescript-app/static/media/blue.183586008e58e72480dc31aad251f907.svg",
     "static/media/red.svg": "/notebook-for-languages-react-typescript-app/static/media/red.3211f41454d76f56430a78249cc4044d.svg",
     "static/media/yellow.svg": "/notebook-for-languages-react-typescript-app/static/media/yellow.36635c251378c166c0651b4e3563f0a1.svg",
-    "main.f007b663.css.map": "/notebook-for-languages-react-typescript-app/static/css/main.f007b663.css.map",
-    "main.49003413.js.map": "/notebook-for-languages-react-typescript-app/static/js/main.49003413.js.map",
+    "main.a9f754ba.css.map": "/notebook-for-languages-react-typescript-app/static/css/main.a9f754ba.css.map",
+    "main.d437bf92.js.map": "/notebook-for-languages-react-typescript-app/static/js/main.d437bf92.js.map",
     "787.155d2bb9.chunk.js.map": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f007b663.css",
-    "static/js/main.49003413.js"
+    "static/css/main.a9f754ba.css",
+    "static/js/main.d437bf92.js"
   ]
 }

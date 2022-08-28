@@ -18,18 +18,16 @@ import { useAppDispatch } from '../../hooks/selectorHook';
 import { onChangeItem, setItem } from '../../redux/item/slice';
 import { fetchItem } from '../../redux/item/asyncAction';
 import { addItem } from '../../redux/vocabulary/slice';
-import { debounce } from 'lodash';
+import useDebounce from '../../hooks/useDebounce';
 
 const Notebook = () => {
   const { list } = useSelector(selectVocabulary);
   const { source, translate } = useSelector(selectItem);
+  const [hide, setHide] = React.useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const timeRef = React.useRef<any>();
 
-  const onChangeWord = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(onChangeItem(event.target.value));
-  };
-
-  const onClickTranslate = () => {
+  const getTranslate = () => {
     try {
       dispatch(fetchItem({ text: source }));
     } catch (err) {
@@ -37,9 +35,25 @@ const Notebook = () => {
     }
   };
 
+  const onChangeWord = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setHide(true);
+    dispatch(onChangeItem(event.target.value));
+  };
+
   const onClickAdd = () => {
     dispatch(addItem({ source: source, translate: translate }));
+    dispatch(setItem({ source: '', translate: '' }));
   };
+
+  React.useEffect(() => {
+    clearInterval(timeRef.current);
+    timeRef.current = setTimeout(getTranslate, 1000);
+    return () => clearInterval(timeRef.current);
+  }, [source]);
+
+  React.useEffect(() => {
+    translate !== '' ? setHide(false) : setHide(true);
+  }, [translate]);
 
   React.useEffect(() => {
     const data = {
@@ -61,26 +75,29 @@ const Notebook = () => {
       )}
       <Row className="mt-2 gy-4">
         <Col lg={4}>
-          <TextField value={source} name="source" onChangeInput={onChangeWord} placeholder="word" />
+          <TextField
+            ref={timeRef}
+            value={source}
+            name="source"
+            onChangeInput={onChangeWord}
+            placeholder="word"
+          />
         </Col>
         <Col lg={2}>
           <TextField placeholder="language" value="english" disabled={true} />
         </Col>
         <Col lg={4}>
-          <Button onClickButton={onClickTranslate}>translate</Button>
+          <TextField value={translate} placeholder="translation" disabled={true} />
         </Col>
         <Col lg={2}>
-          <Button onClickButton={onClickAdd}>add</Button>
+          <Button onClickButton={onClickAdd} disabled={hide ? true : false}>
+            add
+          </Button>
         </Col>
-      </Row>
-      <Row className="mt-3">
-        <span className="title-list">
-          translation: <em>{translate}</em>
-        </span>
       </Row>
       <Row className="mt-5 mb-4 align-items-center justify-content-between">
         <Col lg={3}>
-          <span className="title-list">
+          <span className="text">
             Vocabulary
             <button className="button-setting img-button">
               <img width={25} height={25} src={imgSetting} alt="Setting icon" />

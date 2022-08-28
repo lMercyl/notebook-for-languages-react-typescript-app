@@ -1,7 +1,7 @@
 import styles from './Error.module.scss';
 
 type ErrorProps = {
-  message: string;
+  message?: string;
 };
 
 const Error = ({ message }: ErrorProps) => {

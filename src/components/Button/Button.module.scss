@@ -16,3 +16,20 @@
     background: #65f3db;
   }
 }
+
+.side {
+  font-family: 'Inconsolata';
+  color: #91ffeb;
+  border: none;
+  background-color: #202f3e;
+  opacity: 0.5;
+  font-weight: 400;
+  font-size: 2rem;
+  width: inherit;
+  text-transform: lowercase;
+
+  &:hover {
+    background-color: #202f3e;
+    opacity: 1;
+  }
+}

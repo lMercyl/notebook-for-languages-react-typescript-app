@@ -7,21 +7,19 @@
   color: rgba(232, 255, 251, 0.53);
 }
 
-.vocabulary {
-  li {
-    padding: 0.5rem 0;
-    font-family: 'Inconsolata';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 27px;
-    line-height: 28px;
-    color: #91ffeb;
-    animation: opacityAnim 0.3s ease-in-out;
+.vocabulary-item {
+  padding: 0.5rem 0;
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 28px;
+  color: #91ffeb;
+  animation: opacityAnim 0.3s ease-in-out;
 
-    em {
-      margin-left: 1rem;
-      font-family: 'Roboto', sans-serif;
-    }
+  em {
+    margin-left: 1rem;
+    font-family: 'Roboto', sans-serif;
   }
 }
 

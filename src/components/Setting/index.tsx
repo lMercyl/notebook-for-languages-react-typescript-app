@@ -1,8 +1,8 @@
 import './Setting.scss';
 
 type SettingProps = {
-  onClickHide: () => void;
-  onClickDeleteWord: () => void;
+  onClickHide?: () => void;
+  onClickDeleteWord?: () => void;
 };
 
 const Setting = ({ onClickHide, onClickDeleteWord }: SettingProps) => {

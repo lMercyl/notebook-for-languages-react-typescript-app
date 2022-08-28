@@ -1,18 +1,17 @@
+import { removeItem } from '../../redux/vocabulary/slice';
 import styles from './Delete.module.scss';
+import { useAppDispatch } from '../../hooks/selectorHook';
+import { Item } from '../../redux/vocabulary/types';
 
-interface Item {
-  source: string;
-  translate: string;
+interface ItemProps {
+  item: Item;
 }
 
-type DeleteProps = {
-  item: Item;
-  onClickDelete: (deleteItem: Item) => void;
-};
+const Delete = ({ item }: ItemProps) => {
+  const dispatch = useAppDispatch();
 
-const Delete = ({ onClickDelete, item }: DeleteProps) => {
   return (
-    <button onClick={() => onClickDelete(item)} className={styles.delete}>
+    <button onClick={() => dispatch(removeItem(item))} className={styles.delete}>
       delete
     </button>
   );

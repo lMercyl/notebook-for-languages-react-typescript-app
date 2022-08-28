@@ -1,16 +1,24 @@
 import styles from './Button.module.scss';
 
-type ButtonProps = {
+interface ButtonProps {
   onClickButton?: () => void;
-  text: string;
+  children?: React.ReactNode;
+  side?: boolean;
+}
+
+const ActiveButton = (props: ButtonProps) => {
+  return <Button {...props} side />;
 };
 
-const Button = ({ onClickButton, text }: ButtonProps) => {
+const Button = ({ onClickButton, children, side }: ButtonProps) => {
   return (
-    <button onClick={onClickButton} className={styles.button}>
-      {text}
+    <button
+      type="button"
+      onClick={onClickButton}
+      className={styles.button + (side === true ? ' ' + styles.side : '')}>
+      {children}
     </button>
   );
 };
 
-export default Button;
+export { ActiveButton, Button };

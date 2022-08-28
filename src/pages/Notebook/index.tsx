@@ -1,116 +1,58 @@
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 import Progress from '../../components/Progress';
 import TextField from '../../components/TextField';
 import Error from '../../components/Error';
 import './Notebook.scss';
-import axios from 'axios';
-import React from 'react';
 import Setting from '../../components/Setting';
 import Delete from '../../components/Delete';
 import imgSetting from '../../assets/images/setting.svg';
 import NavTask from '../../components/NavTask';
-
-interface Item {
-  source: string;
-  translate: string;
-}
-
-interface Result {
-  right: number;
-  error: number;
-  all: number;
-}
+import VocItem from '../../components/VocItem';
+import { useSelector } from 'react-redux';
+import { selectVocabulary } from '../../redux/vocabulary/selector';
+import { selectItem } from '../../redux/item/selector';
+import { Item } from '../../redux/vocabulary/types';
+import { useAppDispatch } from '../../hooks/selectorHook';
+import { onChangeItem, setItem } from '../../redux/item/slice';
+import { fetchItem } from '../../redux/item/asyncAction';
+import { addItem } from '../../redux/vocabulary/slice';
+import { debounce } from 'lodash';
 
 const Notebook = () => {
-  const [text, setText] = React.useState<string>('');
-  const [list, setList] = React.useState<Array<Item>>(() => {
-    if (localStorage.getItem('list') !== null) {
-      const data = localStorage.getItem('list');
-      if (typeof data === 'string') {
-        return JSON.parse(data).list.length === 0 ? [] : JSON.parse(data).list;
-      }
-    } else {
-      return [];
-    }
-  });
-  const [result, setResult] = React.useState<Result>(() => {
-    if (localStorage.getItem('result') !== null) {
-      const data = localStorage.getItem('result');
-      if (typeof data === 'string') {
-        return JSON.parse(data).result.all === 0
-          ? { right: 0, error: 0, all: 0 }
-          : JSON.parse(data).result;
-      }
-    } else {
-      return { right: 0, error: 0, all: 0 };
-    }
-  });
-  const [resultChoose, setResultChoose] = React.useState<Result>(() => {
-    if (localStorage.getItem('resultChoose') !== null) {
-      const data = localStorage.getItem('resultChoose');
-      if (typeof data === 'string') {
-        return JSON.parse(data).result.all === 0
-          ? { right: 0, error: 0, all: 0 }
-          : JSON.parse(data).result;
-      }
-    } else {
-      return { right: 0, error: 0, all: 0 };
-    }
-  });
-  const [error, setError] = React.useState<boolean>(false);
-  const [setting, setSetting] = React.useState<boolean>(false);
-  const [hide, setHide] = React.useState<boolean>(false);
-  const [displayDelete, setDisplayDelete] = React.useState<boolean>(false);
+  const { list } = useSelector(selectVocabulary);
+  const { source, translate } = useSelector(selectItem);
+  const dispatch = useAppDispatch();
 
   const onChangeWord = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setText(event.target.value.toLowerCase());
+    dispatch(onChangeItem(event.target.value));
   };
 
-  const isExists = (text: string) => {
-    return list.find((item: Item) => item.source === text);
-  };
-
-  const onClickButtonDelete = (deleteItem: Item) => {
-    setList(list.filter((item: Item) => item !== deleteItem));
-  };
-
-  const onClickTranslate = async () => {
-    if (text === '###') {
-      setList([]);
-    } else {
-      if (!isExists(text)) {
-        setError(false);
-        const request = {
-          q: text,
-          source: 'en',
-          target: 'ru',
-        };
-        try {
-          const { data } = await axios.post(`https://libretranslate.de/translate`, request);
-          setList([...list, { source: text, translate: data.translatedText }]);
-        } catch (err) {
-          setError(true);
-          console.log(err);
-        }
-      } else {
-        setError(true);
-      }
+  const onClickTranslate = () => {
+    try {
+      dispatch(fetchItem({ text: source }));
+    } catch (err) {
+      console.log(err);
     }
+  };
+
+  const onClickAdd = () => {
+    dispatch(addItem({ source: source, translate: translate }));
   };
 
   React.useEffect(() => {
     const data = {
       list: list,
     };
-    return localStorage.setItem('list', JSON.stringify(data));
+    localStorage.setItem('list', JSON.stringify(data));
   });
 
   return (
     <>
-      <Progress right={result.right} all={result.all} />
-      <NavTask right={result.right} all={result.all} />
-      {error && (
+      <Progress right={5} all={10} />
+      <NavTask right={5} all={10} />
+      {false && (
         <Row className="mt-3">
           <Col lg={12}>
             <Error message="The word has already been added or the wrong word has been written" />
@@ -118,49 +60,48 @@ const Notebook = () => {
         </Row>
       )}
       <Row className="mt-2 gy-4">
-        <Col lg={5}>
-          <TextField onChangeInput={onChangeWord} placeholder="word" />
+        <Col lg={4}>
+          <TextField value={source} name="source" onChangeInput={onChangeWord} placeholder="word" />
         </Col>
         <Col lg={2}>
           <TextField placeholder="language" value="english" disabled={true} />
         </Col>
-        <Col lg={5}>
-          <Button onClickButton={onClickTranslate} text="translate" />
+        <Col lg={4}>
+          <Button onClickButton={onClickTranslate}>translate</Button>
         </Col>
+        <Col lg={2}>
+          <Button onClickButton={onClickAdd}>add</Button>
+        </Col>
+      </Row>
+      <Row className="mt-3">
+        <span className="title-list">
+          translation: <em>{translate}</em>
+        </span>
       </Row>
       <Row className="mt-5 mb-4 align-items-center justify-content-between">
         <Col lg={3}>
           <span className="title-list">
             Vocabulary
-            <button onClick={() => setSetting(!setting)} className="button-setting img-button">
+            <button className="button-setting img-button">
               <img width={25} height={25} src={imgSetting} alt="Setting icon" />
             </button>
           </span>
         </Col>
       </Row>
-      {setting ? (
+      {true && (
         <Row className="mb-4">
           <Col lg={4}>
-            <Setting
-              onClickHide={() => setHide(!hide)}
-              onClickDeleteWord={() => setDisplayDelete(!displayDelete)}
-            />
+            <Setting />
           </Col>
         </Row>
-      ) : null}
+      )}
       <Row>
         {list.length !== 0 ? (
-          list.map((item: Item) => (
-            <Col key={item.source} lg={4}>
-              <ul className="vocabulary">
-                <li className="d-flex align-items-center">
-                  {item.source} -{' '}
-                  <em className={hide ? 'hide-translate' : undefined}>{item.translate}</em>
-                  {displayDelete ? (
-                    <Delete item={item} onClickDelete={onClickButtonDelete} />
-                  ) : null}
-                </li>
-              </ul>
+          list.map((item: Item, index) => (
+            <Col key={index} lg={4}>
+              <VocItem source={item.source} translate={item.translate} hide={false}>
+                {true && <Delete item={item} />}
+              </VocItem>
             </Col>
           ))
         ) : (

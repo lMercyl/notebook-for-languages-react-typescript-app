@@ -1,0 +1,27 @@
+.item {
+  display: flex;
+  align-items: center;
+
+  p {
+    padding: 0.5rem 0;
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 28px;
+    color: #91ffeb;
+    animation: opacityAnim 0.3s ease-in-out;
+
+    .em {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .hide {
+      background-color: #91ffeb;
+
+      &:hover {
+        background-color: #202f3e;
+      }
+    }
+  }
+}

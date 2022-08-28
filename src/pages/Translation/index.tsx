@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { ActiveButton } from '../../components/Button';
 import Error from '../../components/Error';
 import './Translation.scss';
 
@@ -90,15 +90,9 @@ const Translation = () => {
           {answer.source === '' ? '<Word>' : answer.source} -{' '}
           {answer.translate === '' ? '<Translation>' : <em>{answer.translate}</em>}
         </p>
-        <button
-          onClick={word.length !== 0 && translate.length !== 0 ? onClickAnswer : onClickComplete}
-          className="submit">
-          {word.length === 0 && translate.length === 0 ? (
-            <Link to="/notebook-for-languages-react-typescript-app">Complete</Link>
-          ) : (
-            'Reply'
-          )}
-        </button>
+        <ActiveButton onClickButton={onClickAnswer} side>
+          reply
+        </ActiveButton>
       </Row>
       <Row>
         <p className="title-list mb-3">The words</p>

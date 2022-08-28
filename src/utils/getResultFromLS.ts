@@ -4,6 +4,12 @@ export const getResultFromLS = () => {
     if (typeof data !== "undefined" && data !== null) {
       const result = JSON.parse(data);
       return result;
+    } else {
+      return {
+        right: 0,
+        error: 0,
+        all: 0,
+      }
     }
   }
 }

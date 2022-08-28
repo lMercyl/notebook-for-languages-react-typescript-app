@@ -12,7 +12,7 @@ import { selectWords } from '../../redux/words/selector';
 import { removeSource, removeTranslation, setWords } from '../../redux/words/slice';
 import { useAppDispatch } from '../../hooks/selectorHook';
 import { setAnswer, setSource, setTranslate } from '../../redux/answer/slice';
-import { addRight, addError, setAll, setResult } from '../../redux/result/slice';
+import { addRight, addError, setResult } from '../../redux/result/slice';
 import { Link } from 'react-router-dom';
 
 const Translation = () => {

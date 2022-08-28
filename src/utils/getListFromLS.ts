@@ -4,6 +4,8 @@ export const getListFromLS = () => {
     if (typeof data !== "undefined" && data !== null) {
       const list = JSON.parse(data);
       return list;
+    } else {
+      return [];
     }
   }
 }

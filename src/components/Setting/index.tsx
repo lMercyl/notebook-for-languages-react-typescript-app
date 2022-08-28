@@ -1,25 +1,11 @@
 import './Setting.scss';
 
 type SettingProps = {
-  onClickHide?: () => void;
-  onClickDeleteWord?: () => void;
+  children?: React.ReactNode;
 };
 
-const Setting = ({ onClickHide, onClickDeleteWord }: SettingProps) => {
-  return (
-    <ul>
-      <li>
-        <button onClick={onClickHide} className="button-setting">
-          hide translation
-        </button>
-      </li>
-      <li>
-        <button onClick={onClickDeleteWord} className="button-setting">
-          delete words
-        </button>
-      </li>
-    </ul>
-  );
+const Setting = ({ children }: SettingProps) => {
+  return <ul>{children}</ul>;
 };
 
 export default Setting;

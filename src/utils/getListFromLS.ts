@@ -3,9 +3,9 @@ export const getListFromLS = () => {
     const data = localStorage.getItem('list');
     if (typeof data !== "undefined" && data !== null) {
       const list = JSON.parse(data);
-      return list.length !== 0 ? list : [];
+      return list.length !== 0 ? list : {list: []};
     }
   } else {
-    return [];
+    return {list: []}
   }
 }

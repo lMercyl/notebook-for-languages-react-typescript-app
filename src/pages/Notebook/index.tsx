@@ -46,6 +46,18 @@ const Notebook = () => {
       return { right: 0, error: 0, all: 0 };
     }
   });
+  const [resultChoose, setResultChoose] = React.useState<Result>(() => {
+    if (localStorage.getItem('resultChoose') !== null) {
+      const data = localStorage.getItem('resultChoose');
+      if (typeof data === 'string') {
+        return JSON.parse(data).result.all === 0
+          ? { right: 0, error: 0, all: 0 }
+          : JSON.parse(data).result;
+      }
+    } else {
+      return { right: 0, error: 0, all: 0 };
+    }
+  });
   const [error, setError] = React.useState<boolean>(false);
   const [setting, setSetting] = React.useState<boolean>(false);
   const [hide, setHide] = React.useState<boolean>(false);

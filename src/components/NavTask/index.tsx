@@ -47,7 +47,7 @@ const NavTask = ({ right, all }: NavTaskProps) => {
             </li>
             <li className="d-flex align-items-center">
               <img width={25} height={25} src={expect} alt="expects" />
-              <Link to="/notebook-for-languages-react-typescript-app">Speech (in developing)</Link>
+              <Link to="/notebook-for-languages-react-typescript-app/speech/1">Speech</Link>
             </li>
           </ul>
         </nav>

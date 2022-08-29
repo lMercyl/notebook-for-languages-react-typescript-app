@@ -4,8 +4,8 @@
   "icons": [
     {
       "src": "icon.svg",
-      "sizes": "144x144",
-      "type": "image/svg+xml",
+      "sizes": "1024x1024",
+      "type": "image/png",
       "purpose": "any"
     }
   ],

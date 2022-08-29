@@ -58,8 +58,6 @@ const Translation = () => {
     localStorage.setItem('result', JSON.stringify(data));
   };
 
-  console.log(result);
-
   return (
     <>
       {err && (

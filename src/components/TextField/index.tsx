@@ -6,13 +6,20 @@ type TextFieldProps = {
   placeholder?: string;
   onChangeInput?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
-  ref?: React.LegacyRef<HTMLInputElement>;
+  reference?: React.LegacyRef<HTMLInputElement> | undefined;
 };
 
-const TextField = ({ ref, name, onChangeInput, placeholder, value, disabled }: TextFieldProps) => {
+const TextField = ({
+  reference,
+  name,
+  onChangeInput,
+  placeholder,
+  value,
+  disabled,
+}: TextFieldProps) => {
   return (
     <input
-      ref={ref}
+      ref={reference}
       name={name}
       value={value}
       onChange={onChangeInput}

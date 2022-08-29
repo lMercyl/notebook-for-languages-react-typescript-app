@@ -36,8 +36,6 @@ const Notebook = () => {
   const { right, all } = useSelector(selectResult);
   const dispatch = useAppDispatch();
 
-  console.log(right, all);
-
   const [userActions, setUserActions] = React.useState<userActions>({
     disableButton: false,
     hideWord: false,
@@ -110,7 +108,7 @@ const Notebook = () => {
       <Row className="mt-2 gy-4">
         <Col lg={4}>
           <TextField
-            ref={timeRef}
+            reference={timeRef}
             value={source}
             name="source"
             onChangeInput={onChangeWord}

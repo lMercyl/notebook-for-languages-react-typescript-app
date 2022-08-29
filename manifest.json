@@ -3,9 +3,9 @@
   "name": "Notebook for languages App PWA",
   "icons": [
     {
-      "src": "icon.svg",
-      "type": "image/svg",
-      "sizes": "1024x1024"
+      "src": "icon.svg+xml",
+      "type": "image/svg+xml",
+      "sizes": "144x144"
     }
   ],
   "start_url": "./",

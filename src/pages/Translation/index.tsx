@@ -1,19 +1,19 @@
 import React from 'react';
+import './Translation.scss';
 import { Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { ActiveButton, Button } from '../../components/Button';
 import Error from '../../components/Error';
-import './Translation.scss';
-import { shuffle } from '../../utils/suffle';
 import { useSelector } from 'react-redux';
 import { selectAnswer } from '../../redux/answer/selector';
 import { selectResult } from '../../redux/result/selector';
 import { selectVocabulary } from '../../redux/vocabulary/selector';
 import { selectWords } from '../../redux/words/selector';
 import { removeSource, removeTranslation, setWords } from '../../redux/words/slice';
-import { useAppDispatch } from '../../hooks/selectorHook';
 import { setAnswer, setSource, setTranslate } from '../../redux/answer/slice';
 import { addRight, addError, setResult } from '../../redux/result/slice';
-import { Link } from 'react-router-dom';
+import { shuffle } from '../../utils/suffle';
+import { useAppDispatch } from '../../hooks/selectorHook';
 
 const Translation = () => {
   const [err, setErr] = React.useState<boolean>(false);
@@ -62,7 +62,7 @@ const Translation = () => {
     <>
       {err && (
         <Row>
-          <Error message="Error: Fill out the answer below" />
+          <Error message="Fill out the answer below" />
         </Row>
       )}
       <Row className="justify-content-center mt-5 mb-5">

@@ -1,15 +1,17 @@
 import React from 'react';
+import './Notebook.scss';
 import { Row, Col } from 'react-bootstrap';
 import { Button } from '../../components/Button';
 import Progress from '../../components/Progress';
 import TextField from '../../components/TextField';
 import Error from '../../components/Error';
-import './Notebook.scss';
-import Setting from '../../components/Setting';
+import ActionList from '../../components/ActionList';
 import Delete from '../../components/Delete';
 import imgSetting from '../../assets/images/setting.svg';
 import NavTask from '../../components/NavTask';
 import VocItem from '../../components/VocItem';
+import SettingItem from '../../components/SettingItem';
+import NavItem from '../../components/NavItem';
 import { useSelector } from 'react-redux';
 import { selectVocabulary } from '../../redux/vocabulary/selector';
 import { selectItem } from '../../redux/item/selector';
@@ -18,8 +20,6 @@ import { useAppDispatch } from '../../hooks/selectorHook';
 import { onChangeItem, setItem } from '../../redux/item/slice';
 import { fetchItem } from '../../redux/item/asyncAction';
 import { addItem } from '../../redux/vocabulary/slice';
-import NavItem from '../../components/NavItem';
-import SettingItem from '../../components/SettingItem';
 import { selectResult } from '../../redux/result/selector';
 
 interface userActions {
@@ -142,7 +142,7 @@ const Notebook = () => {
       {userActions.hideSettings && (
         <Row className="mb-4">
           <Col lg={4}>
-            <Setting>
+            <ActionList>
               <SettingItem
                 onClickButton={() =>
                   setUserActions({ ...userActions, hideWord: !userActions.hideWord })
@@ -155,7 +155,7 @@ const Notebook = () => {
                 }>
                 delete words
               </SettingItem>
-            </Setting>
+            </ActionList>
           </Col>
         </Row>
       )}

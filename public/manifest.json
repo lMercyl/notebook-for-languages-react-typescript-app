@@ -1,11 +1,12 @@
 {
   "short_name": "Notebook for languages",
-  "name": "Notebook for languages App PWA",
+  "name": "Notebook for languages",
   "icons": [
     {
-      "src": "icon.svg+xml",
-      "type": "image/svg+xml",
-      "sizes": "144x144"
+      "src": "icon.svg",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "start_url": "./",

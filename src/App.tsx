@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Layout from './layout';
 import Notebook from './pages/Notebook';
-import Speech from './pages/Speech';
+import Listening from './pages/Listening';
 import Translation from './pages/Translation';
 
 const App = () => {
@@ -15,8 +15,8 @@ const App = () => {
           element={<Translation />}
         />
         <Route
-          path="/notebook-for-languages-react-typescript-app/speech/:id"
-          element={<Speech />}
+          path="/notebook-for-languages-react-typescript-app/listening"
+          element={<Listening />}
         />
       </Route>
     </Routes>

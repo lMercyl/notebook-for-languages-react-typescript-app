@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/notebook-for-languages-react-typescript-app/static/css/main.c619a9eb.css",
-    "main.js": "/notebook-for-languages-react-typescript-app/static/js/main.e7c9776b.js",
+    "main.js": "/notebook-for-languages-react-typescript-app/static/js/main.20b82442.js",
     "static/js/787.155d2bb9.chunk.js": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js",
     "service-worker.js": "/notebook-for-languages-react-typescript-app/service-worker.js",
     "static/media/setting.svg": "/notebook-for-languages-react-typescript-app/static/media/setting.d2dd0c085f9d36e6b9088fc23743ad90.svg",
     "static/media/expect.svg": "/notebook-for-languages-react-typescript-app/static/media/expect.9c4671049b9e1452e1041f0cea64b702.svg",
     "index.html": "/notebook-for-languages-react-typescript-app/index.html",
+    "static/media/blue.svg": "/notebook-for-languages-react-typescript-app/static/media/blue.e9c397ba53cd74ede08d3d7e6c924419.svg",
+    "static/media/red.svg": "/notebook-for-languages-react-typescript-app/static/media/red.43ed0a96890c87446ba01985828af78c.svg",
+    "static/media/yellow.svg": "/notebook-for-languages-react-typescript-app/static/media/yellow.b7301f026944d737880a2b39236720ad.svg",
     "static/media/user.svg": "/notebook-for-languages-react-typescript-app/static/media/user.5e2f853a4d6b71f25d486ccec951e834.svg",
-    "static/media/blue.svg": "/notebook-for-languages-react-typescript-app/static/media/blue.183586008e58e72480dc31aad251f907.svg",
-    "static/media/red.svg": "/notebook-for-languages-react-typescript-app/static/media/red.3211f41454d76f56430a78249cc4044d.svg",
-    "static/media/yellow.svg": "/notebook-for-languages-react-typescript-app/static/media/yellow.36635c251378c166c0651b4e3563f0a1.svg",
     "main.c619a9eb.css.map": "/notebook-for-languages-react-typescript-app/static/css/main.c619a9eb.css.map",
-    "main.e7c9776b.js.map": "/notebook-for-languages-react-typescript-app/static/js/main.e7c9776b.js.map",
+    "main.20b82442.js.map": "/notebook-for-languages-react-typescript-app/static/js/main.20b82442.js.map",
     "787.155d2bb9.chunk.js.map": "/notebook-for-languages-react-typescript-app/static/js/787.155d2bb9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c619a9eb.css",
-    "static/js/main.e7c9776b.js"
+    "static/js/main.20b82442.js"
   ]
 }

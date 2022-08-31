@@ -31,10 +31,12 @@ interface userActions {
 }
 
 const Notebook = () => {
+  const dispatch = useAppDispatch();
+
+  const result = useSelector(selectResult);
   const { list } = useSelector(selectVocabulary);
   const { source, translate } = useSelector(selectItem);
-  const { right, all } = useSelector(selectResult);
-  const dispatch = useAppDispatch();
+  const { translation, speed, reading, allTask } = useSelector(selectResult);
 
   const [userActions, setUserActions] = React.useState<userActions>({
     disableButton: false,
@@ -43,6 +45,7 @@ const Notebook = () => {
     error: false,
     delete: false,
   });
+
   const timeRef = React.useRef<any>();
 
   const getTranslate = () => {
@@ -64,12 +67,6 @@ const Notebook = () => {
   };
 
   React.useEffect(() => {
-    clearInterval(timeRef.current);
-    timeRef.current = setTimeout(getTranslate, 1000);
-    return () => clearInterval(timeRef.current);
-  }, [source]);
-
-  React.useEffect(() => {
     setUserActions({ ...userActions, disableButton: translate !== '' ? false : true });
   }, [translate]);
 
@@ -78,22 +75,33 @@ const Notebook = () => {
       list: list,
     };
     localStorage.setItem('list', JSON.stringify(data));
+    localStorage.setItem('result', JSON.stringify(result));
   });
 
   return (
     <>
-      <Progress right={right} all={all} />
+      <Progress right={translation.right + speed.right + reading.right} all={allTask} />
       <Row className="mt-3">
         <Col lg={12}>
           <NavTask>
-            <NavItem right={right} all={all} to="translation">
+            <NavItem
+              right={translation.right}
+              all={allTask !== 0 ? allTask / 2 : 0}
+              to="translation">
               Translation
             </NavItem>
-            <NavItem right={0} all={0} to="speed">
-              Speed (in developing)
+            <NavItem right={speed.right} all={allTask !== 0 ? allTask / 2 : 0} to="speed/4">
+              Speed
             </NavItem>
-            <NavItem right={0} all={0} to="listening">
-              Listening
+            <NavItem
+              right={reading.right}
+              all={
+                allTask !== 0 && result.translation.error !== 0 && result.translation.right !== 0
+                  ? allTask / 2
+                  : 0
+              }
+              to="reading">
+              Reading
             </NavItem>
           </NavTask>
         </Col>

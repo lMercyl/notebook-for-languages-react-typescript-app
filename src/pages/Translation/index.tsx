@@ -11,18 +11,19 @@ import { selectVocabulary } from '../../redux/vocabulary/selector';
 import { selectWords } from '../../redux/words/selector';
 import { removeSource, removeTranslation, setWords } from '../../redux/words/slice';
 import { setAnswer, setSource, setTranslate } from '../../redux/answer/slice';
-import { addRight, addError, setResult } from '../../redux/result/slice';
-import { shuffle } from '../../utils/suffle';
+import { addRight, addError, setTranslation, setAll } from '../../redux/result/slice';
+import { shuffle } from 'lodash';
 import { useAppDispatch } from '../../hooks/selectorHook';
 
 const Translation = () => {
-  const [err, setErr] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
-  const { list } = useSelector(selectVocabulary);
   const result = useSelector(selectResult);
+  const { list } = useSelector(selectVocabulary);
   const { source, translate } = useSelector(selectAnswer);
   const { sources, translations } = useSelector(selectWords);
-  const dispatch = useAppDispatch();
+
+  const [err, setErr] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     dispatch(
@@ -31,7 +32,8 @@ const Translation = () => {
         translations: shuffle(list.map((item) => item.translate)),
       }),
     );
-    dispatch(setResult({ right: 0, error: 0, all: list.length * 2 }));
+    dispatch(setAll(list.length * 4));
+    dispatch(setTranslation({ right: 0, error: 0 }));
   }, []);
 
   const onClickAnswer = () => {
@@ -39,9 +41,9 @@ const Translation = () => {
       setErr(true);
     } else {
       if (list.find((item) => item.source === source && item.translate === translate)) {
-        dispatch(addRight());
+        dispatch(addRight('translation'));
       } else {
-        dispatch(addError());
+        dispatch(addError('translation'));
       }
       dispatch(setAnswer({ source: '', translate: '' }));
       dispatch(removeSource(source));
@@ -50,12 +52,7 @@ const Translation = () => {
   };
 
   const onClickComplete = () => {
-    const data = {
-      right: result.right,
-      error: result.error,
-      all: result.all,
-    };
-    localStorage.setItem('result', JSON.stringify(data));
+    localStorage.setItem('result', JSON.stringify(result));
   };
 
   return (

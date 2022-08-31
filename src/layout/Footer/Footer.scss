@@ -1,29 +1,8 @@
-.footer-navigator {
-  li {
-    display: inline;
-    padding: 0 1rem;
-
-    a {
-      font-family: 'Inconsolata';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 27px;
-      line-height: 28px;
-      color: rgba(153, 253, 235, 0.63);
-
-      &:hover {
-        text-decoration: underline;
-        color: rgba(155, 245, 229, 0.872);
-      }
-    }
-  }
-}
-
 .privacy {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
   font-size: 27px;
   line-height: 28px;
-  color: rgba(100, 168, 231, 0.47);
+  color: rgba(100, 168, 231, 0.3);
 }

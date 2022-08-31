@@ -2,8 +2,9 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Layout from './layout';
 import Notebook from './pages/Notebook';
-import Listening from './pages/Listening';
+import Reading from './pages/Reading';
 import Translation from './pages/Translation';
+import Speed from './pages/Speed';
 
 const App = () => {
   return (
@@ -15,9 +16,10 @@ const App = () => {
           element={<Translation />}
         />
         <Route
-          path="/notebook-for-languages-react-typescript-app/listening"
-          element={<Listening />}
+          path="/notebook-for-languages-react-typescript-app/speed/:size"
+          element={<Speed />}
         />
+        <Route path="/notebook-for-languages-react-typescript-app/reading" element={<Reading />} />
       </Route>
     </Routes>
   );

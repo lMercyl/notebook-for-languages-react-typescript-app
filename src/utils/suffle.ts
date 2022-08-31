@@ -1,4 +1,4 @@
-export const shuffle = (arr: Array<any>) => {
+export const shuffleArr = (arr: Array<any>) => {
   let j : number;
   let temp : any;
   for (let i : number = arr.length - 1; i > 0; i--) {

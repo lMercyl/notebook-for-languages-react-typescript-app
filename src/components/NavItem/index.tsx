@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import bad from '../../assets/images/red.svg';
 import blue from '../../assets/images/blue.svg';
 import yellow from '../../assets/images/yellow.svg';
@@ -23,7 +23,7 @@ const NavItem = ({ right, all, children, to }: NavItemProps) => {
       ) : (
         <img width={25} height={25} src={expect} alt="expects" />
       )}
-      <Link to={`/notebook-for-languages-react-typescript-app/${to}`}>{children}</Link>
+      <NavLink to={`/notebook-for-languages-react-typescript-app/${to}`}>{children}</NavLink>
       {all !== 0 && (
         <span>
           {Math.floor((right / all) * 100) < 50

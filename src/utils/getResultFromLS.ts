@@ -1,3 +1,8 @@
+const initialResult = {
+  right: 0,
+  error: 0,
+}
+
 export const getResultFromLS = () => {
   if (localStorage.getItem('result')) {
     const data = localStorage.getItem('result');
@@ -6,16 +11,18 @@ export const getResultFromLS = () => {
       return result;
     } else {
       return {
-        right: 0,
-        error: 0,
-        all: 0,
+        translation: initialResult,
+        speed: initialResult,
+        reading: initialResult,
+        allTask: 0
       }
     }
   } else {
     return {
-      right: 0,
-      error: 0,
-      all: 0,
+      translation: initialResult,
+      speed: initialResult,
+      reading: initialResult,
+      allTask: 0
     }
   }
 }

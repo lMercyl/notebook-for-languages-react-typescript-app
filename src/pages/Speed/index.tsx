@@ -49,6 +49,7 @@ const Speed = () => {
   React.useEffect(() => {
     setCount(0);
     dispatch(setPosition(shuffle(range(0, list.length))));
+    dispatch(setAll(list.length * 2));
     dispatch(setSpeed({ right: 0, error: 0 }));
     return () => {
       clearInterval(timeRef.current);

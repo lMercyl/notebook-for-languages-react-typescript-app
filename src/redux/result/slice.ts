@@ -29,15 +29,15 @@ const ResultSlice = createSlice({
     addRight(state: ResultSliceState, action: PayloadAction<string>) {
       switch (action.payload) {
         case "translation": {
-          state.translation.right += 2;
+          state.translation.right += 1;
           break;
         }
         case "speed": {
-          state.speed.right += 2;
+          state.speed.right += 1;
           break;
         }
         case "reading": {
-          state.reading.right += 2;
+          state.reading.right += 1;
           break;
         }
         default: {
@@ -48,15 +48,15 @@ const ResultSlice = createSlice({
     addError(state: ResultSliceState, action: PayloadAction<string>) {
       switch (action.payload) {
         case "translation": {
-          state.translation.error += 2;
+          state.translation.error += 1;
           break;
         }
         case "speed": {
-          state.speed.error += 2;
+          state.speed.error += 1;
           break;
         }
         case "reading": {
-          state.reading.error += 2;
+          state.reading.error += 1;
           break;
         }
         default: {

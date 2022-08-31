@@ -67,6 +67,12 @@ const Notebook = () => {
   };
 
   React.useEffect(() => {
+    clearInterval(timeRef.current);
+    timeRef.current = setTimeout(getTranslate, 1000);
+    return () => clearInterval(timeRef.current);
+  }, [source]);
+
+  React.useEffect(() => {
     setUserActions({ ...userActions, disableButton: translate !== '' ? false : true });
   }, [translate]);
 
@@ -80,26 +86,29 @@ const Notebook = () => {
 
   return (
     <>
-      <Progress right={translation.right + speed.right + reading.right} all={allTask} />
+      <Progress right={translation?.right + speed?.right + reading?.right} all={allTask} />
       <Row className="mt-3">
         <Col lg={12}>
           <NavTask>
             <NavItem
-              right={translation.right}
-              all={allTask !== 0 ? allTask / 2 : 0}
-              to="translation">
-              Translation
-            </NavItem>
-            <NavItem right={speed.right} all={allTask !== 0 ? allTask / 2 : 0} to="speed/4">
-              Speed
-            </NavItem>
-            <NavItem
-              right={reading.right}
+              right={translation?.right}
               all={
-                allTask !== 0 && result.translation.error !== 0 && result.translation.right !== 0
+                allTask !== 0 && (translation?.right !== 0 || translation?.error !== 0)
                   ? allTask / 2
                   : 0
               }
+              to="translation">
+              Translation
+            </NavItem>
+            <NavItem
+              right={speed?.right}
+              all={allTask !== 0 && (speed?.right !== 0 || speed?.error !== 0) ? allTask / 2 : 0}
+              to="speed/4">
+              Speed
+            </NavItem>
+            <NavItem
+              right={reading?.right}
+              all={allTask !== 0 && reading?.right !== 0 && reading?.error !== 0 ? allTask / 2 : 0}
               to="reading">
               Reading
             </NavItem>

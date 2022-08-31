@@ -32,7 +32,7 @@ const Translation = () => {
         translations: shuffle(list.map((item) => item.translate)),
       }),
     );
-    dispatch(setAll(list.length * 4));
+    dispatch(setAll(list.length * 2));
     dispatch(setTranslation({ right: 0, error: 0 }));
   }, []);
 

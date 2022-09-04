@@ -21,6 +21,8 @@ import { onChangeItem, setItem } from '../../redux/item/slice';
 import { fetchItem } from '../../redux/item/asyncAction';
 import { addItem } from '../../redux/vocabulary/slice';
 import { selectResult } from '../../redux/result/selector';
+import { setSource } from '../../redux/answer/slice';
+import Support from '../../components/Support';
 
 interface userActions {
   disableButton: boolean;

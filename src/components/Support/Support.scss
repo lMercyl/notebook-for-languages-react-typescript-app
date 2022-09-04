@@ -1,0 +1,37 @@
+.support {
+  p {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 40px;
+    color: rgba(232, 255, 251, 0.53);
+
+    .cursor {
+      display: inline;
+      padding: 0rem 0.3rem;
+      margin-left: 0.3rem;
+      width: 10px;
+      height: 23px;
+      background-color: #91ffeb;
+      animation: animOpacity 0.5s ease-in-out infinite;
+    }
+
+    span {
+      margin-right: 1rem;
+      color: #91ffeb;
+    }
+  }
+}
+
+@keyframes animOpacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

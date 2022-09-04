@@ -11,10 +11,11 @@ const Header = () => {
       <Row className="pt-5 pb-5 align-items-center justify-content-between">
         <Col lg={4}>
           <h1 className="header-title">{'<Notebook lg="en" />'}</h1>
+          <h1 className="header-title-mobile">{'<Notebook />'}</h1>
         </Col>
-        <Col lg={6} className="d-flex align-items-center justify-content-center">
+        <Col lg={6} className="footer-navigator">
           <nav>
-            <ul className="footer-navigator">
+            <ul className="footer-navigator d-flex align-items-center justify-content-center">
               <li>
                 <Link to="/notebook-for-languages-react-typescript-app">Vk.com</Link>
               </li>
@@ -27,7 +28,7 @@ const Header = () => {
             </ul>
           </nav>
         </Col>
-        <Col lg={1} className="d-flex justify-content-end">
+        <Col lg={1} className="user-button d-flex justify-content-end">
           <Button img={true}>
             <img width={45} height={45} src={user} alt="user" />
           </Button>

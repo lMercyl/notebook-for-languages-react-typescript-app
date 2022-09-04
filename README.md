@@ -4,4 +4,4 @@ I created this project for my own purposes to learn English
 
 Stack: React, TypeScript, Redux-Toolkit, Redux-Thunk, SCSS, Bootstrap, axios
 
-![image](https://github.com/notebook-for-languages-react-typescript-app/src/assets/images/video_1.gif)
+![image](https://github.com/lMercyl/notebook-for-languages-react-typescript-app/blob/master/src/assets/images/video_1.gif)

@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Layout from './layout';
 import Notebook from './pages/Notebook';
-import Reading from './pages/Reading';
 import Translation from './pages/Translation';
 import Speed from './pages/Speed';
 
@@ -19,7 +18,6 @@ const App = () => {
           path="/notebook-for-languages-react-typescript-app/speed/:size"
           element={<Speed />}
         />
-        <Route path="/notebook-for-languages-react-typescript-app/reading" element={<Reading />} />
       </Route>
     </Routes>
   );

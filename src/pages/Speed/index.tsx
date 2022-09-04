@@ -104,7 +104,7 @@ const Speed = () => {
         <>
           <Row>
             <Support
-              title="translation"
+              title="speed"
               text="You have 5 seconds to choose the correct or incorrect translation for the word"
             />
           </Row>

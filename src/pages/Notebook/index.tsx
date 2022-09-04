@@ -21,8 +21,6 @@ import { onChangeItem, setItem } from '../../redux/item/slice';
 import { fetchItem } from '../../redux/item/asyncAction';
 import { addItem } from '../../redux/vocabulary/slice';
 import { selectResult } from '../../redux/result/selector';
-import { setSource } from '../../redux/answer/slice';
-import Support from '../../components/Support';
 
 interface userActions {
   disableButton: boolean;
@@ -107,12 +105,6 @@ const Notebook = () => {
               all={allTask !== 0 && (speed?.right !== 0 || speed?.error !== 0) ? allTask / 2 : 0}
               to="speed/4">
               Speed
-            </NavItem>
-            <NavItem
-              right={reading?.right}
-              all={allTask !== 0 && reading?.right !== 0 && reading?.error !== 0 ? allTask / 2 : 0}
-              to="reading">
-              Reading
             </NavItem>
           </NavTask>
         </Col>

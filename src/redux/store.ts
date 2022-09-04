@@ -5,7 +5,6 @@ import answer from "./answer/slice";
 import result from "./result/slice";
 import words from "./words/slice";
 import position from "./positions/slice";
-import text from "./text/slice";
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +13,7 @@ export const store = configureStore({
     answer,
     result,
     words,
-    position,
-    text
+    position
   }
 })
 
